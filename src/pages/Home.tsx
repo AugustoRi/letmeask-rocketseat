@@ -23,7 +23,7 @@ export function Home() {
     } 
 
     navigate('./rooms/new');
-  }
+  } 
 
   async function handleJoinRoom(event: FormEvent) {
     event.preventDefault();
@@ -36,6 +36,11 @@ export function Home() {
 
     if (!roomRef.exists()) {
       alert('This Room does not exists.')
+      return;
+    }
+
+    if (roomRef.val().endedAt) {
+      alert('Room alredy closed.')
       return;
     }
 
